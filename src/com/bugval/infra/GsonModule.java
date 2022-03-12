@@ -11,12 +11,13 @@ import java.util.ServiceLoader;
 
 @Module
 public class GsonModule {
-    @Provides @Singleton
-    public Gson commonBuilder() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        for (TypeAdapterFactory factory : ServiceLoader.load(TypeAdapterFactory.class)) {
-            gsonBuilder.registerTypeAdapterFactory(factory);
-        }
-        return gsonBuilder.create();
+  @Provides
+  @Singleton
+  public Gson commonBuilder() {
+    GsonBuilder gsonBuilder = new GsonBuilder();
+    for (TypeAdapterFactory factory : ServiceLoader.load(TypeAdapterFactory.class)) {
+      gsonBuilder.registerTypeAdapterFactory(factory);
     }
+    return gsonBuilder.create();
+  }
 }

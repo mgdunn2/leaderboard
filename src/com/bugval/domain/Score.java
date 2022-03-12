@@ -9,8 +9,10 @@ import java.math.BigInteger;
 @Gson.TypeAdapters
 @Value.Immutable
 public interface Score {
-    String getId();
-    BigInteger getScore();
-    @SerializedName("pos")
-    int getPosition();
+  String getId();
+
+  BigInteger getScore();
+
+  @SerializedName("pos")
+  int getPosition();
 }

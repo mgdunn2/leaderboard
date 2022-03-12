@@ -16,18 +16,18 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class HttpScoreFetcher implements ScoreFetcher {
-    private final HttpClient client;
-    private final Gson gson;
+  private final HttpClient client;
+  private final Gson gson;
 
-    @Inject
-    public HttpScoreFetcher(HttpClient client, Gson gson) {
-        this.client = client;
-        this.gson = gson;
-    }
+  @Inject
+  public HttpScoreFetcher(HttpClient client, Gson gson) {
+    this.client = client;
+    this.gson = gson;
+  }
 
-    @Override
-    public List<Score> fetchScores() {
-        try {
+  @Override
+  public List<Score> fetchScores() {
+    try {
       return gson.fromJson(
           client
               .send(
@@ -35,8 +35,8 @@ public class HttpScoreFetcher implements ScoreFetcher {
                   HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8))
               .body(),
           new TypeToken<List<Score>>() {}.getType());
-        } catch (IOException | InterruptedException | URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+    } catch (IOException | InterruptedException | URISyntaxException e) {
+      throw new RuntimeException(e);
     }
+  }
 }

@@ -10,18 +10,19 @@ import java.net.http.HttpClient;
 
 @Module
 public class ServicesModule {
-    @Provides @RequestScope
-    public HttpClient provideHttpClient() {
-        return HttpClient.newBuilder().build();
-    }
+  @Provides
+  @RequestScope
+  public HttpClient provideHttpClient() {
+    return HttpClient.newBuilder().build();
+  }
 
-    @Provides
-    public ScoreFetcher provideScoreFetcher(HttpScoreFetcher fetcher) {
-        return fetcher;
-    }
+  @Provides
+  public ScoreFetcher provideScoreFetcher(HttpScoreFetcher fetcher) {
+    return fetcher;
+  }
 
-    @Provides
-    public ScoreRepo provideScoreRepo(InMemoryScoreRepo scoreRepo) {
-        return scoreRepo;
-    }
+  @Provides
+  public ScoreRepo provideScoreRepo(InMemoryScoreRepo scoreRepo) {
+    return scoreRepo;
+  }
 }
