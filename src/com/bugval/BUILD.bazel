@@ -4,6 +4,7 @@ java_binary(
     deps = [
         "//src/com/bugval/domain",
         "//src/com/bugval/infra",
+        "//src/com/bugval/operations",
         "//src/com/bugval/services",
         "//src/com/bugval/util",
         "@maven//:com_google_code_gson_gson",

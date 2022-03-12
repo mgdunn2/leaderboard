@@ -3,7 +3,7 @@ package com.bugval;
 import com.bugval.domain.Score;
 import com.bugval.infra.GsonModule;
 import com.bugval.infra.ServicesModule;
-import com.bugval.services.IterationHandler;
+import com.bugval.operations.IterationOperation;
 import com.bugval.util.RequestScope;
 import dagger.Component;
 import dagger.Module;
@@ -25,7 +25,7 @@ public class LeaderBoard {
         .scheduleAtFixedRate(
             () -> {
               try {
-                leaderBoard.requestProvider.get().build().iterationHandler().handleIteration();
+                leaderBoard.requestProvider.get().build().iterationOperation().handleIteration();
               } catch (Exception e) {
                 e.printStackTrace();
               }
@@ -62,7 +62,7 @@ public class LeaderBoard {
         ServicesModule.class,
       })
   public interface Request {
-    IterationHandler iterationHandler();
+    IterationOperation iterationOperation();
 
     @Subcomponent.Builder
     interface Builder {
