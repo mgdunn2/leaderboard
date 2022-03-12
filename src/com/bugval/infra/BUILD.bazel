@@ -1,0 +1,15 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "infra",
+    srcs = glob(["*.java"]),
+    deps = [
+        "//src/com/bugval/domain",
+        "//src/com/bugval/services",
+        "//src/com/bugval/util",
+        "@maven//:com_google_code_gson_gson",
+        "@maven//:com_google_guava_guava",
+        "@maven//:javax_inject_javax_inject",
+        "//thirdparty:dagger"
+    ],
+)

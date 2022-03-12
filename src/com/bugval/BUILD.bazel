@@ -1,0 +1,13 @@
+java_binary(
+    name = "LeaderBoard",
+    srcs = ["LeaderBoard.java"],
+    deps = [
+        "//src/com/bugval/domain",
+        "//src/com/bugval/infra",
+        "//src/com/bugval/services",
+        "//src/com/bugval/util",
+        "@maven//:com_google_code_gson_gson",
+        "@maven//:com_google_guava_guava",
+        "//thirdparty:dagger",
+    ],
+)

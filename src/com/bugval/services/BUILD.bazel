@@ -1,0 +1,11 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "services",
+    srcs = glob(["*.java"]),
+    deps = [
+        "//src/com/bugval/domain",
+        "@maven//:com_google_guava_guava",
+        "@maven//:javax_inject_javax_inject",
+    ],
+)

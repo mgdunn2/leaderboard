@@ -1,0 +1,44 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "dagger",
+    exported_plugins = [":dagger-plugin"],
+    exports = [
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:javax_inject_javax_inject",
+    ],
+)
+
+java_plugin(
+    name = "dagger-plugin",
+    generates_api = True,
+    processor_class = "dagger.internal.codegen.ComponentProcessor",
+    deps = [
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_dagger_dagger_compiler",
+        "@maven//:com_google_dagger_dagger_producers",
+        "@maven//:com_google_guava_guava",
+        "@maven//:javax_inject_javax_inject",
+    ],
+)
+
+java_library(
+    name = "immutables",
+    exported_plugins = [":immutables-plugin"],
+    exports = [
+        "@maven//:com_google_code_gson_gson",
+        "@maven//:org_immutables_value",
+        "@maven//:org_immutables_gson",
+    ]
+)
+
+java_plugin(
+    name = "immutables-plugin",
+    generates_api = True,
+    processor_class = "org.immutables.processor.ProxyProcessor",
+    deps = [
+        "@maven//:org_immutables_value",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_code_findbugs_jsr305",
+    ],
+)
