@@ -5,8 +5,10 @@ import com.bugval.services.ScoreRepo;
 import com.google.common.collect.ImmutableList;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.List;
 
+@Singleton
 public class InMemoryScoreRepo implements ScoreRepo {
   private List<Score> scores;
 

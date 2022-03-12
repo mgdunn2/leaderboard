@@ -2,10 +2,8 @@ package com.bugval;
 
 import com.bugval.domain.Score;
 import com.bugval.infra.GsonModule;
-import com.bugval.infra.RepoModule;
 import com.bugval.infra.ServicesModule;
 import com.bugval.services.IterationHandler;
-import com.bugval.services.ScoreFetcher;
 import com.bugval.util.RequestScope;
 import dagger.Component;
 import dagger.Module;
@@ -53,7 +51,7 @@ public class LeaderBoard {
   }
 
   @Singleton
-  @Component(modules = {GsonModule.class, Request.RequestModule.class, RepoModule.class})
+  @Component(modules = {GsonModule.class, Request.RequestModule.class})
   public interface LeaderBoardComponent {
     LeaderBoard leaderBoard();
   }
