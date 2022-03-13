@@ -1,6 +1,5 @@
 package com.bugval;
 
-import com.bugval.domain.Score;
 import com.bugval.infra.GsonModule;
 import com.bugval.infra.ServicesModule;
 import com.bugval.operations.IterationOperation;
@@ -12,11 +11,11 @@ import dagger.Subcomponent;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.inject.Singleton;
-import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+@Singleton
 public class LeaderBoard {
   public static void main(String[] args) {
     LeaderBoard leaderBoard = DaggerLeaderBoard_LeaderBoardComponent.create().leaderBoard();
@@ -25,7 +24,7 @@ public class LeaderBoard {
         .scheduleAtFixedRate(
             () -> {
               try {
-                leaderBoard.requestProvider.get().build().iterationOperation().handleIteration();
+                leaderBoard.requestProvider.get().build().iterationOperation().run();
               } catch (Exception e) {
                 e.printStackTrace();
               }
@@ -42,8 +41,6 @@ public class LeaderBoard {
   }
 
   private final Provider<Request.Builder> requestProvider;
-  private Map<Integer, Score> positionToScore;
-  private Map<String, Score> playerToScore;
 
   @Inject
   public LeaderBoard(Provider<Request.Builder> requestProvider) {
@@ -52,16 +49,13 @@ public class LeaderBoard {
 
   @Singleton
   @Component(modules = {GsonModule.class, Request.RequestModule.class})
-  public interface LeaderBoardComponent {
+  interface LeaderBoardComponent {
     LeaderBoard leaderBoard();
   }
 
   @RequestScope
-  @Subcomponent(
-      modules = {
-        ServicesModule.class,
-      })
-  public interface Request {
+  @Subcomponent(modules = {ServicesModule.class})
+  interface Request {
     IterationOperation iterationOperation();
 
     @Subcomponent.Builder

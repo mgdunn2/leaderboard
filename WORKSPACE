@@ -17,7 +17,7 @@ maven_install(
         "com.google.dagger:dagger-compiler:2.22",
         "com.google.dagger:dagger-producers:2.22",
         "com.google.code.gson:gson:2.8.5",
-        "com.google.guava:guava:27.0.1-jre",
+        "com.google.guava:guava:31.1-jre",
         "javax.inject:javax.inject:1",
         "org.immutables:gson:2.7.5",
         "org.immutables:value:2.7.5",
