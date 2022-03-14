@@ -21,6 +21,7 @@ maven_install(
         "javax.inject:javax.inject:1",
         "org.immutables:gson:2.7.5",
         "org.immutables:value:2.7.5",
+        "com.github.ben-manes.caffeine:caffeine:3.0.5"
     ],
     repositories = [
         "https://maven.google.com",

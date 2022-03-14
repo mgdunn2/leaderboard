@@ -7,6 +7,9 @@ import com.google.common.collect.ImmutableMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Repository for storing and loading the state of the last seen set of scores.
+ */
 public interface ScoreRepo {
   List<Score> getScores();
 

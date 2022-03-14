@@ -1,5 +1,6 @@
 package com.bugval;
 
+import com.bugval.infra.SingletonModule;
 import com.bugval.infra.GsonModule;
 import com.bugval.infra.ServicesModule;
 import com.bugval.operations.IterationOperation;
@@ -48,7 +49,7 @@ public class LeaderBoard {
   }
 
   @Singleton
-  @Component(modules = {GsonModule.class, Request.RequestModule.class})
+  @Component(modules = {GsonModule.class, SingletonModule.class, Request.RequestModule.class})
   interface LeaderBoardComponent {
     LeaderBoard leaderBoard();
   }

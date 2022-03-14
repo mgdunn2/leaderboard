@@ -6,6 +6,9 @@ import org.immutables.value.Value;
 
 import java.math.BigInteger;
 
+/**
+ * Domain object representing the score of a single Player
+ */
 @Gson.TypeAdapters
 @Value.Immutable
 public interface Score {

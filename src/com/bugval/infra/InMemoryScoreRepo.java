@@ -8,6 +8,10 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.List;
 
+/**
+ * Implementation of {@link ScoreRepo} that maintains state in memory. Annotated with @Singleton to ensure that only
+ * a single instance is every insantiated.
+ */
 @Singleton
 public class InMemoryScoreRepo implements ScoreRepo {
   private List<Score> scores;
